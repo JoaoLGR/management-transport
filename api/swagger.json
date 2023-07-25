@@ -1,0 +1,488 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Fretes",
+    "version": "1.0.0",
+    "description": "Documentação da API de Fretes"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "Servidor de Desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/createFreight": {
+      "post": {
+        "summary": "Cria um novo frete",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Freight"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Frete cadastrado com sucesso!"
+          },
+          "400": {
+            "description": "Erro: Frete não cadastrado com sucesso!"
+          }
+        }
+      }
+    },
+    "/getFreights": {
+      "get": {
+        "summary": "Obtém a lista de fretes",
+        "responses": {
+          "200": {
+            "description": "Lista de fretes obtida com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "boolean" },
+                    "freights": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Freight"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro: Nenhum frete encontrado!"
+          }
+        }
+      }
+    },
+    "/updateFreight/{id}": {
+      "put": {
+        "summary": "Atualiza um frete existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Freight"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Frete atualizado com sucesso"
+          },
+          "404": {
+            "description": "Frete não encontrado"
+          }
+        }
+      }
+    },
+    "/deleteFreight/{id}": {
+      "delete": {
+        "summary": "Deleta um frete existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Frete deletado com sucesso"
+          },
+          "404": {
+            "description": "Frete não encontrado"
+          }
+        }
+      }
+    },
+    "/createProduct": {
+      "post": {
+        "summary": "Cria um novo produto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produto cadastrado com sucesso!"
+          },
+          "400": {
+            "description": "Erro: Produto não cadastrado com sucesso!"
+          }
+        }
+      }
+    },
+    "/getProducts": {
+      "get": {
+        "summary": "Obtém a lista de produtos",
+        "responses": {
+          "200": {
+            "description": "Lista de produtos obtida com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "boolean" },
+                    "products": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro: Nenhum produto encontrado!"
+          }
+        }
+      }
+    },
+    "/updateProduct/{id}": {
+      "put": {
+        "summary": "Atualiza um produto existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Produto atualizado com sucesso"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          }
+        }
+      }
+    },
+    "/deleteProduct/{id}": {
+      "delete": {
+        "summary": "Deleta um produto existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produto deletado com sucesso"
+          },
+          "404": {
+            "description": "Produto não encontrado"
+          }
+        }
+      }
+    },
+    "/createUser": {
+      "post": {
+        "summary": "Cria um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário cadastrado com sucesso!"
+          },
+          "400": {
+            "description": "Erro: Usuário não cadastrado com sucesso!"
+          }
+        }
+      }
+    },
+    "/getUsers": {
+      "get": {
+        "summary": "Obtém a lista de usuários",
+        "responses": {
+          "200": {
+            "description": "Lista de usuários obtida com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "boolean" },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro: Nenhum usuário encontrado!"
+          }
+        }
+      }
+    },
+    "/updateUser/{id}": {
+      "put": {
+        "summary": "Atualiza um usuário existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário atualizado com sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/deleteUser/{id}": {
+      "delete": {
+        "summary": "Deleta um usuário existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário deletado com sucesso"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/createVehicle": {
+      "post": {
+        "summary": "Cria um novo veículo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo cadastrado com sucesso!"
+          },
+          "400": {
+            "description": "Erro: Veículo não cadastrado com sucesso!"
+          }
+        }
+      }
+    },
+    "/getVehicles": {
+      "get": {
+        "summary": "Obtém a lista de veículos",
+        "responses": {
+          "200": {
+            "description": "Lista de veículos obtida com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "boolean" },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vehicle"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro: Nenhum veículo encontrado!"
+          }
+        }
+      }
+    },
+    "/updateVehicle/{id}": {
+      "put": {
+        "summary": "Atualiza um veículo existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo atualizado com sucesso"
+          },
+          "404": {
+            "description": "Veículo não encontrado"
+          }
+        }
+      }
+    },
+    "/deleteVehicle/{id}": {
+      "delete": {
+        "summary": "Deleta um veículo existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veículo deletado com sucesso"
+          },
+          "404": {
+            "description": "Veículo não encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Freight": {
+        "type": "object",
+        "properties": {
+          "product": { "type": "string" },
+          "product_wheight": { "type": "string" },
+          "vehicle": { "type": "string" },
+          "vehicle_wheight": { "type": "string" },
+          "freight": { "type": "number" },
+          "delivery_value": { "type": "number" },
+          "kms": { "type": "string" }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "product_name": { "type": "string" },
+          "product_type": { "type": "string" },
+          "product_wheight": { "type": "string" }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "user_name": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        }
+      },
+      "Vehicle": {
+        "type": "object",
+        "properties": {
+          "vehicle_name": { "type": "string" },
+          "vehicle_type": { "type": "string" },
+          "max_wheight": { "type": "string" }
+        }
+      }
+    }
+  }
+}
